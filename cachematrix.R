@@ -1,10 +1,24 @@
-## Put comments here that give an overall description of what your
-## functions do
+# This R file contains the functions corresponding to Program Assingment
+# 02 from the R Programming course
+# The maing goal is to learn about the <<- operator
 
-## Write a short comment describing this function
 
-makeCacheMatrix <- function(x = matrix()) {
+# This function creates a special kind of matrix that can
+# cache its inverse and call it in order to avoid unecessary
+# computations
 
+makeCacheMatrix <- function(x = matrix())
+{
+    i <- x$getInv()
+    if(!is.null(i))
+    {
+        message("getting cached data")
+        return(i)
+    }
+    data <- x$get()
+    i <- solve(data, ...)
+    x$setInv(i)
+    i
 }
 
 
